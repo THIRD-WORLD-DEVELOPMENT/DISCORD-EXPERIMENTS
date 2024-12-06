@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developers Experiment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Source Code Pro', monospace;
+            background-color: #0a0a1a;
+            color: #0ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+        .code-container {
+            background-color: rgba(0, 0, 30, 0.8);
+            border: 2px solid #0ff;
+            border-radius: 10px;
+            box-shadow: 
+                0 0 10px #0ff, 
+                0 0 20px #0ff, 
+                inset 0 0 15px rgba(0, 255, 255, 0.3);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            transform-style: preserve-3d;
+            transform: rotateX(10deg);
+            transition: all 0.3s ease;
+        }
+        .code-container:hover {
+            transform: rotateX(0deg) scale(1.02);
+            box-shadow: 
+                0 0 15px #0ff, 
+                0 0 25px #0ff, 
+                inset 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+        .code-header {
+            background: linear-gradient(to right, #0ff, #0a0);
+            color: #000;
+            padding: 10px 15px;
+            margin: -30px -30px 20px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+            line-height: 1.6;
+            text-shadow: 0 0 5px #0ff;
+        }
+        .copy-btn {
+            background-color: #0ff;
+            color: #000;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .copy-btn:hover {
+            background-color: #0a0;
+            transform: scale(1.1);
+        }
+        .keyword { color: #569CD6; }
+        .string { color: #CE9178; }
+        .glitch {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            animation: glitch 0.3s infinite;
+        }
+        @keyframes glitch {
+            0% { opacity: 0.9; }
+            100% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body>
+    <div class="code-container">
+        <div class="code-header">
+            Developers Experiment Terminal
+            <button class="copy-btn" onclick="copyScript()">Copy Script</button>
+        </div>
+        <pre id="code-content"><span class="keyword">let</span> cache; webpackChunkdiscord_app.push([[<span class="string">Symbol()</span>], {}, (<span class="keyword">e</span>) => cache = e.c]); webpackChunkdiscord_app.pop();
+
+<span class="keyword">let</span> user = Object.values(cache).find(<span class="keyword">x</span> => <span class="keyword">x</span>?.exports?.default?.getUser).exports.default
+nodes = Object.values(user._dispatcher._actionHandlers._dependencyGraph.nodes);
+userr = user.getCurrentUser();
+userr.flags = <span class="string">1</span>;
+userr.isStaff = () => <span class="string">true</span>;
+userr.isStaffPersonal = () => <span class="string">true</span>;
+
+<span class="keyword">try</span> {
+    nodes.find(<span class="keyword">x</span> => <span class="keyword">x</span>.name == <span class="string">"ExperimentStore"</span>).actionHandler[<span class="string">"OVERLAY_INITIALIZE"</span>]({ user: userr });
+} <span class="keyword">catch</span> (error) {};
+
+user.getCurrentUser = user.getNonImpersonatedCurrentUser = () => (userr);
+
+nodes.find(<span class="keyword">x</span> => <span class="keyword">x</span>.name == <span class="string">"DeveloperExperimentStore"</span>).actionHandler[<span class="string">"OVERLAY_INITIALIZE"</span>]();</pre>
+    </div>
+    <div class="glitch"></div>
+
+    <script>
+        function copyScript() {
+            const originalContent = document.getElementById('code-content');
+            const tempTextArea = document.createElement('textarea');
+            
+            tempTextArea.value = `let cache; webpackChunkdiscord_app.push([[Symbol()], {}, (e) => cache = e.c]); webpackChunkdiscord_app.pop();
+
+let user = Object.values(cache).find(x => x?.exports?.default?.getUser).exports.default
+nodes = Object.values(user._dispatcher._actionHandlers._dependencyGraph.nodes);
+userr = user.getCurrentUser();
+userr.flags = 1;
+userr.isStaff = () => true;
+userr.isStaffPersonal = () => true;
+
+try {
+    nodes.find(x => x.name == "ExperimentStore").actionHandler["OVERLAY_INITIALIZE"]({ user: userr });
+} catch (error) {};
+
+user.getCurrentUser = user.getNonImpersonatedCurrentUser = () => (userr);
+
+nodes.find(x => x.name == "DeveloperExperimentStore").actionHandler["OVERLAY_INITIALIZE"]();`;
+            
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyBtn = document.querySelector('.copy-btn');
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => {
+                copyBtn.textContent = 'Copy Script';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
