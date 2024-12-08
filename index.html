@@ -129,8 +129,7 @@ nodes.find(<span class="keyword">x</span> => <span class="keyword">x</span>.name
             const originalContent = document.getElementById('code-content');
             const tempTextArea = document.createElement('textarea');
             
-            tempTextArea.value = `l
-let cache; webpackChunkdiscord_app.push([[Symbol()], {}, (e) => cache = e.c]); webpackChunkdiscord_app.pop();
+            tempTextArea.value = `let cache; webpackChunkdiscord_app.push([[Symbol()], {}, (e) => cache = e.c]); webpackChunkdiscord_app.pop();
 
 let user = Object.values(cache).find(x => x?.exports?.default?.getUser).exports.default
 nodes = Object.values(user._dispatcher._actionHandlers._dependencyGraph.nodes);
